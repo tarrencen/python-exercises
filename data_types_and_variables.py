@@ -27,23 +27,22 @@ print(this_weeks_work)
 #A student can be enrolled to a class only if the class is not full and the 
 #class schedule does not conflict with her current schedule.
 
-student_enrollment = True
+
 class_full = False
 schedule_conflict = False
 
-student_enrollment == not class_full and not schedule_conflict
+student_enrollment = not class_full and not schedule_conflict
 
 # A product offer can be applied only if people buy more than 2 items, 
 # and the offer has not expired. Premium members do not need to buy a 
 # specific amount of products.
 
 
-product_offer = True
 more_than_two_items = True
 offer_expired = False
 premium_member = True
 
-product_offer == not offer_expired and (more_than_two_items or premium_member)
+product_offer = not offer_expired and (more_than_two_items or premium_member)
 
 #Continue working in your data_types_and_variables.py file. Use the 
 # following code to follow the instructions below:
@@ -54,10 +53,10 @@ password = 'notastrongpassword'
 #Create a variable that holds a boolean value for each of the following 
 # conditions:
 
-len(password) >= 5
-len(username) <= 20
+len(password) > 5
+len(username) < 20
 password != username
-username = username.strip
-password = password.strip
+username = username.strip()
+password = password.strip()
 
 
