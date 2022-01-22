@@ -18,12 +18,12 @@ def is_two(value):
     else:
         return False
 
-is_two('Two')
-is_two('TWO')
-is_two('two')
-is_two(2)
-is_two('2')
-is_two(37)
+assert is_two('Two') == True
+assert is_two('TWO') == True
+assert is_two('two') == True
+assert is_two(2) == True
+assert is_two('2') == True
+assert is_two(37) == False
 
 # Define a function named is_vowel. It should return True if the passed string 
 # is a vowel, False otherwise.
@@ -31,15 +31,15 @@ is_two(37)
 vowels = 'aeiouAEIOU'
 
 def is_vowel(string):
-    if string in vowels:
+    if len(string) == 1 and string in vowels:
         return True
     else:
         return False
 
-is_vowel('a')
-is_vowel('b')
-is_vowel('U')
-is_vowel('y')
+assert is_vowel('a') == True
+assert is_vowel('b') == False
+assert is_vowel('U') == True
+assert is_vowel('y') == False
 
 
 # Define a function named is_consonant. It should return True if the passed 
@@ -52,9 +52,9 @@ def is_consonant(string):
     else: 
         return False
 
-is_consonant('E')
-is_consonant('t')
-is_consonant('i')
+assert is_consonant('E') == False
+assert is_consonant('t') == True
+assert is_consonant('i') == False
 
 
 
@@ -68,8 +68,8 @@ def capped_word(string):
     else:
         return no_cap
 
-capped_word('buddy')
-capped_word('aloysius')
+assert capped_word('buddy') == 'Buddy'
+
 
 
 # Define a function named calculate_tip. It should accept a tip percentage 
@@ -96,15 +96,8 @@ apply_discount(1179, 0.45)
 # number that contains commas in it as input, and return a number as output.
 
 def handle_commas(string):
-    count = 0
-    for string in string:
-        if string == ',':
-            count += 1
-    return count
-
-handle_commas('To, boldly go..., where none, have gone, before, and use way, way, way too many commas...,,,')
-handle_commas('And now for something completely different and absolutely devoid of verbal pauses or breaks')
-
+    
+    
 
 
 # Define a function named get_letter_grade. It should accept a number and 
@@ -146,12 +139,28 @@ remove_vowels('kryswctky')
 # Define a function named normalize_name. It should accept a string and 
 # return a valid python identifier (as shown in example)
 
-def normalize_name(string):
-   
+import re
 
+accepted_chars = 'abcdefghijklmnopqrstuvwxyz_'
+
+def normalize_name(string):
+    stripped_name = re.sub(' ', '_', string.strip())
+    norm_stripped_name = stripped_name.lower()
+    
+
+
+   
 normalize_name(' Tarrence Nichols ! ')
 
 
 # Write a function named cumulative_sum that accepts a list of numbers and 
 # returns a list that is the cumulative sum of the numbers in the list.
+
+import numpy as np
+
+def cumulative_sum(arr):
+    arr = np.array([])
+    return np.cumsum(arr)
+
+cumulative_sum([5, 6, 7, 8])
 
