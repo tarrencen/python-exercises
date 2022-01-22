@@ -37,7 +37,6 @@ student_enrollment = not class_full and not schedule_conflict
 # and the offer has not expired. Premium members do not need to buy a 
 # specific amount of products.
 
-
 more_than_two_items = True
 offer_expired = False
 premium_member = True
