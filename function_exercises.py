@@ -76,11 +76,14 @@ assert capped_word('buddy') == 'Buddy'
 # (a number between 0 and 1) and the bill total, and return the amount to tip.
 
 
-def calculate_tip(tip_percent, bill_total):
-    return tip_percent * bill_total
+def calculate_tip(bill_total, tip_percent=0.2):
+    if tip_percent > 0.0 and tip_percent < 1.0:
+        return bill_total * tip_percent
+    else:
+        return 'Too much or not enough'
 
-calculate_tip(0.18, 27.95)
-calculate_tip(0.55, 1237.99)
+calculate_tip(134.79)
+calculate_tip(1237.09, 0.67)
     
 
 # Define a function named apply_discount. It should accept a original price, 
@@ -95,9 +98,20 @@ apply_discount(1179, 0.45)
 # Define a function named handle_commas. It should accept a string that is a 
 # number that contains commas in it as input, and return a number as output.
 
+import re
+
 def handle_commas(string):
-    
-    
+    if type(string) != str:
+        return 'Invalid input'
+    string = re.sub(',', '', string)
+    if string.isdigit():
+        return int(string)
+    else:
+        return 'Invalid input'
+
+handle_commas('1,000,000,000')
+handle_commas('One billion, two hundred million, three hundred thirty thousand, seven hundred and fifty-seven dollars and thirty-eight cents')
+
 
 
 # Define a function named get_letter_grade. It should accept a number and 
@@ -141,16 +155,34 @@ remove_vowels('kryswctky')
 
 import re
 
-accepted_chars = 'abcdefghijklmnopqrstuvwxyz_'
+spec_chars = ['!', '@', '#', '$', '%', '^', '*', '(', ')', ',', '<', '>', '?']
 
 def normalize_name(string):
-    stripped_name = re.sub(' ', '_', string.strip())
-    norm_stripped_name = stripped_name.lower()
-    
+    if type(string) == str:
+        string = string.lower()
+        string = string.strip()
+        string = re.sub(' ', '_', string)
+        for l in string:
+            if l in spec_chars:
+                string = re.sub(l, '', string)
+                string = string.lstrip('_')
+                string = string.rstrip('_')
+                return string.strip()
+        
+    return string
+
+   
+normalize_name(' Clarence Carter! ')
+normalize_name('Tarrence Nichols')
+
+normalize_name('% Completed')
 
 
    
-normalize_name(' Tarrence Nichols ! ')
+assert normalize_name(' Clarence Carter! ') == 'clarence_carter'
+assert normalize_name('First Name') == 'first_name'
+assert normalize_name('Name') == 'name'
+assert normalize_name('% Completed') == 'completed'
 
 
 # Write a function named cumulative_sum that accepts a list of numbers and 
@@ -158,9 +190,14 @@ normalize_name(' Tarrence Nichols ! ')
 
 import numpy as np
 
-def cumulative_sum(arr):
-    arr = np.array([])
+def cumulative_sum(arr=[1, 2, 3, 4]):
     return np.cumsum(arr)
 
 cumulative_sum([5, 6, 7, 8])
+cumulative_sum([1, 1, 1])
+
+'''assert cumulative_sum([1, 1, 1]) == ([1, 2, 3])
+assert cumulative_sum([1, 2, 3, 4]) == ([1, 3, 6, 10])
+assert cumulative_sum([1, 0, -1, 5]) == ([1, 1, 0, 5]) -- assertion errors, even though
+the function outputs an array with a cumulative sum as prescribed in the exercise'''
 
