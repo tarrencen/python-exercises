@@ -198,6 +198,7 @@ cumulative_sum([1, 1, 1])
 
 '''assert cumulative_sum([1, 1, 1]) == ([1, 2, 3])
 assert cumulative_sum([1, 2, 3, 4]) == ([1, 3, 6, 10])
-assert cumulative_sum([1, 0, -1, 5]) == ([1, 1, 0, 5]) -- assertion errors, even though
+assert cumulative_sum([1, 0, -1, 5]) == ([1, 1, 0, 5]) -- assertion error: "The truth value
+of an array with more than one element is ambiguous. Use a.any() or a.all()", even though
 the function outputs an array with a cumulative sum as prescribed in the exercise'''
 
