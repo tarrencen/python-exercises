@@ -3,6 +3,9 @@
 #prompt the user for a day of the week, print out whether the day 
 # is Monday or not
 
+import numbers
+
+
 day_of_the_week = input("What day of the week is it?")
 if day_of_the_week == "Monday":
     print("Today is Monday.")
@@ -126,14 +129,14 @@ while True:
         print(f'Number to skip is: {z}')
     else:
         print ('Invalid input. Try again.')
+        break
     
     for n in range(1,50):
         if n % 2 != 0:
             print(f'Here is an odd number: {n}')
         elif n == z:
             print(f'Yikes! Skipping number: {z}')
+        
 
 
 
-
-    
