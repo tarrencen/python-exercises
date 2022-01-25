@@ -47,15 +47,17 @@ product_offer = not offer_expired and (more_than_two_items or premium_member)
 # following code to follow the instructions below:
 
 username = 'codeup'
-password = 'notastrongpassword'
+password = ' notastrongpassword '
 
 #Create a variable that holds a boolean value for each of the following 
 # conditions:
 
-len(password) > 5
-len(username) < 20
+long_enough_password = len(password) > 5
+short_enough_username = len(username) < 20
 password != username
 username = username.strip()
 password = password.strip()
+
+
 
 
