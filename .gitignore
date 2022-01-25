@@ -1,2 +1,4 @@
 .ipynb_checkpoints
 functions_lesson.py
+__pycache__/
+profiles.json
